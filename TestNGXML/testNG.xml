@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Practice Suite" parallel="tests" thread-count="2">
+	<test name="Test Basics 1">
+		<parameter name="browsername" value="chrome" />
+		<classes>
+			<class name="com.flink.testfactory.TestRunner" />
+		</classes>
+	</test>
+
+	<test name="Test Basics 2">
+		<parameter name="browsername" value="firefox" />
+		<classes>
+			<class name="com.flink.testfactory.TestRunner" />
+		</classes>
+	</test>
+
+</suite>
