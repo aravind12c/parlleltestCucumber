@@ -24,7 +24,7 @@ Java, Cucumber, Selenium Webdriver, TestNG
 - If you want to update URL and Payment details, please open config.properties from Web Config and update it.
 
 ## Steps to run
-- Download and Extract this project to your local or git clone https://github.com/aravind12c/happeotestframework.git
+- Download and Extract this project to your local or git clone https://github.com/aravind12c/flinktestassesment.git
 - Import as a Maven project in any IDE
 - Open tesNG.xm file, from "TestNGXML" folder
 - Now run as TestNG Suite
