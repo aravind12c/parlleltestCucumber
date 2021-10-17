@@ -12,7 +12,7 @@ import org.testng.Assert;
 import com.flink.webUtilities.PropertyUtils;
 
 public class BuyProduct extends BasePage {
-	
+
 	/**
 	 * Page Objects and methods are associated based on the steps
 	 */
@@ -58,6 +58,8 @@ public class BuyProduct extends BasePage {
 		} else if (temp > 34) {
 			clickOn(buysunscreenbtn);
 			productcategory = "Sunscreen";
+		} else {
+			Assert.fail("The temp is not within the test range.");
 		}
 	}
 
@@ -95,12 +97,17 @@ public class BuyProduct extends BasePage {
 
 	public static String getLeastPrice(List<WebElement> elements) {
 		ArrayList<Integer> pricelist = new ArrayList<Integer>();
-		for (WebElement ele : elements) {
-			String[] prices = getTextOnEle(ele).split(" ");
-			pricelist.add(Integer.parseInt(prices[prices.length - 1]));
+		try {
+			for (WebElement ele : elements) {
+				String[] prices = getTextOnEle(ele).split(" ");
+				pricelist.add(Integer.parseInt(prices[prices.length - 1]));
+			}
+			Collections.sort(pricelist);
+			return String.valueOf(pricelist.get(0));
+		} catch (Exception e) {
+			Assert.fail("There is no product related to the selected scenario");
+			return null;
 		}
-		Collections.sort(pricelist);
-		return String.valueOf(pricelist.get(0));
 	}
 
 	public static void clickOnCart() {
@@ -150,8 +157,10 @@ public class BuyProduct extends BasePage {
 	}
 
 	public static void verifyPaymentSuccessMsg() {
-		Assert.assertTrue(isElementDisplayed(paymentsuccess), "Payment got Failed");
-		Assert.assertEquals(PropertyUtils.configProperty("successmsg"), getTextOn(paymentjustifymsg));
+		Assert.assertTrue(isElementDisplayed(paymentsuccess),
+				"Payment got failed as there was chance the payment may fail");
+		Assert.assertEquals(PropertyUtils.configProperty("successmsg"), getTextOn(paymentjustifymsg),
+				"Payment success msg is not as expected");
 	}
 
 }
