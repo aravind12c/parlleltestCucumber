@@ -34,3 +34,6 @@ Below are the points considered while creating the framework
 - Design pattern - Page object model
 - Framework - Cucumber(For Test approach), Selenium Driver(For UI Automation), TestNG(For Parallel Execution)
 - Language - Java
+
+## Note 
+As there is 5% cahance that Payment may fail, so there may be chance of last step to fail
