@@ -1,5 +1,4 @@
-# Flink Test Framework 
-
+# Parllel Test Framework
 
 ## Tech stack Used
 Java, Cucumber, Selenium Webdriver, TestNG
